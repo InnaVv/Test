@@ -7,12 +7,13 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.refresh;
 
-public class Message {
+public class MessagePage {
 
-    SelenideElement writeEmailButton = $(By.xpath("//a[contains(@class,'mail-ComposeButton')]"));
+    SelenideElement writeEmailButton = $(By.cssSelector(".mail-ComposeButton"));
     SelenideElement sendToField = $(By.xpath("//div[@class='composeYabbles']"));
     SelenideElement subjectField = $(By.xpath("//input[@name='subject']"));
     SelenideElement sendButton = $(By.xpath("//div[contains(@class,'ComposeSendButton')]/button"));
+    SelenideElement refreshButton = $(By.cssSelector(".mail-ComposeButton-Refresh"));
 
 
     public void sendEmail(String mailAddress, String subject) {
