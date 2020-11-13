@@ -17,7 +17,7 @@ public class EmailPage extends LoginPage {
     SelenideElement logoUser = $(By.cssSelector(".legouser__current-account"));
     SelenideElement logoutButton = $(By.xpath("//span[contains(text(),'Выйти из сервисов Яндекса')]"));
 
-    public String lookForMessage(String expectedSubject) {
+    public String lookForMessage() {
         String result = null;
         ElementsCollection sentMailList = $$(By.xpath("/descendant::div[contains(@class, 'mail-MessageSnippet-Content')]"));
         SelenideElement actualSubjectValue = $(By.cssSelector(".mail-Message-Toolbar-Subject"));
@@ -25,7 +25,7 @@ public class EmailPage extends LoginPage {
         for (SelenideElement mailSubject : sentMailList) {
 //            mailSubject.click();
 //            actualSubjectValue.waitUntil(Condition.appear, 6000);
-            result = mailSubject.find(By.cssSelector(".mail-MessageSnippet-Item_subject")).getText();
+            result = mailSubject.find(By.cssSelector(".mail-MessageSnippet-Item_sender")).getText();
 
 //            result = mailSubject.find(By.cssSelector(".mail-MessageSnippet-FromText")).getText();
         }
