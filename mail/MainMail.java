@@ -10,22 +10,22 @@ public class MainMail {
     @Test
     public void emailLogin() throws InterruptedException {
         open("https://mail.yandex.by/");
-        $(By.xpath("//a[span[text()='Войти']]")).click();
+        $(By.xpath("//div[contains(@class,'Footer')]//a[contains(@href,'auth?')]")).click();
         $(By.xpath("//input[@id='passp-field-login']")).setValue("qazxsw-2016").pressEnter();
         $(By.xpath("//input[@id='passp-field-passwd']")).setValue("1234testTEST").pressEnter();
 
         sleep(1000);
-        $(By.xpath("//span[contains(text(),'Написать')]")).click();
+        $(By.xpath("//a[contains(@class,'mail-ComposeButton')]")).click();
         sleep(1000);
         $(By.xpath("//div[@class='composeYabbles']")).setValue("qazxsw-2016@yandex.ru").pressEnter();
-        $(By.xpath("//input[@name='subject']")).setValue("InnaAuto1");
-        $(By.xpath("//button[@class='control button2 button2_view_default button2_tone_default button2_size_l button2_theme_action button2_pin_circle-circle ComposeControlPanelButton-Button ComposeControlPanelButton-Button_action']")).click();
-        sleep(100);
+        $(By.xpath("//input[@name='subject']")).setValue("InnaAuto2");
+        $(By.xpath("//div[contains(@class,'ComposeSendButton')]/button")).click();
+        sleep(1000);
 
         refresh();
 
-        String mailSubject = $(By.xpath("//span[contains(text(),'InnaAuto')]")).getText();
-        Assert.assertEquals(mailSubject, "InnaAuto1", "There is NO email with such subject");
+        String mailSubject = $(By.xpath("//div[contains(@class, 'ns-view-messages-item-wrap')][1]")).getText();
+        Assert.assertEquals(mailSubject, "InnaAuto2", "There is NO email with such subject");
 
 
 

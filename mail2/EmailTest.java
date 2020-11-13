@@ -2,28 +2,38 @@ package com.sparta.mail2;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
 
 public class EmailTest {
-
-    Faker faker = new Faker();
-
-//    String url = "https://mail.yandex.by/";
-//    String mail = "qazxsw-2016@yandex.ru";
-//    String pass = "1234testTEST";
-    String subject = faker.twinPeaks().quote();
 
 
     EmailPage emailPage = new EmailPage();
     MessagePage messagePage = new MessagePage();
+    Faker faker = new Faker();
 
-    @Test (dataProvider = "sender")
+    @BeforeMethod
+    public void clearCache() {
+        clearBrowserCache();
+    }
+
+    @AfterMethod
+    protected void afterTest() {
+        emailPage.logout();
+        clearBrowserCache();
+    }
+
+    @Test (dataProvider = "sender", dataProviderClass = DataClass.class)
     public void sendEmail(DataClass.CredentialsData credentialsData){
-        emailPage.login(credentialsData.getUrl1(),credentialsData.getMail1(),credentialsData.getPass1());
-        messagePage.sendEmail(credentialsData.getMail1(), subject);
-        Assert.assertEquals(emailPage.lookForMessage(), subject, "There is NO email with such subject");
+        String body = faker.harryPotter().quote();
+        String subject = faker.harryPotter().character();
+
+        emailPage.login(credentialsData.getUrl(),credentialsData.getMail(),credentialsData.getPass());
+        messagePage.sendEmail(credentialsData.getRecipient(), subject, body);
+//        Assert.assertTrue(emailPage.lookForMessage(subject), "There is NO email with such subject");
+
+        Assert.assertEquals(emailPage.lookForMessage(subject), subject, "There is NO email with such subject");
     }
 }
