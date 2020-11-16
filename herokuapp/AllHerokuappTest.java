@@ -20,13 +20,13 @@ public class AllHerokuappTest {
         softAssert.assertTrue(dropDownAlloptions.contains("Please select an option"), "There is NO 'Please select an option' option");
         softAssert.assertTrue(dropDownAlloptions.contains("Option 1"), "There is NO 'Option 1' option");
         softAssert.assertTrue(dropDownAlloptions.contains("Option 2"), "There is NO 'POption 2' option");
-        softAssert.assertAll("Check dropdown options");
+        softAssert.assertAll();
     }
 
     @Test
     public void SelectDropdownValue(){
         open(url);
-        Assert.assertEquals(dropDownPage.selectInDropDown("Option 1"), "Option 1", "Option is selected");
+        Assert.assertEquals(dropDownPage.selectInDropDown("Option 1"), "Option 1", "Option is NOT selected");
 
     }
 }
