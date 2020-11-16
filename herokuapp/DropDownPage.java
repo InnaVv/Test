@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class DropDownPage {
     SelenideElement dropDown = $(By.id("dropdown"));
-    SelenideElement SelectedDropDownElement = $(By.xpath("//select[@id='dropdown']//@selected"));
 
     public List<String> dropDownOptions() {
         List<String> result = new ArrayList<>();
