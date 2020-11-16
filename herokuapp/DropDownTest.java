@@ -8,13 +8,20 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class AllHerokuappTest {
+public class DropDownTest {
     DropDownPage dropDownPage = new DropDownPage();
     SoftAssert softAssert = new SoftAssert();
     String url = "https://the-internet.herokuapp.com/dropdown";
+    String defaultValue = "Please select an option";
 
     @Test
-    public void DropdownDefaultValuesTest(){
+    public void dropDownDefaultValue(){
+        open(url);
+        Assert.assertEquals(dropDownPage.checkDefaultValue(),defaultValue, "Default value is NOT " + defaultValue);
+    }
+
+    @Test
+    public void dropdownAllValuesTest(){
         open(url);
         List<String> dropDownAlloptions = dropDownPage.dropDownOptions();
         softAssert.assertTrue(dropDownAlloptions.contains("Please select an option"), "There is NO 'Please select an option' option");
@@ -24,7 +31,7 @@ public class AllHerokuappTest {
     }
 
     @Test
-    public void SelectDropdownValue(){
+    public void selectDropdownValue(){
         open(url);
         Assert.assertEquals(dropDownPage.selectInDropDown("Option 1"), "Option 1", "Option is NOT selected");
 

@@ -29,4 +29,8 @@ public class DropDownPage {
         dropDown.selectOptionContainingText(options);
         return dropDown.getText();
     }
+
+    public String checkDefaultValue() {
+        return dropDown.getText();
+    }
 }
