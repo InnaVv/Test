@@ -30,8 +30,8 @@ public class DownloadPage {
         return false;
     }
 
-    public boolean downloadFile(String fileName) throws FileNotFoundException {
-        Configuration.reportsFolder = "D:\\auto";
+    public boolean downloadFile(String folder) throws FileNotFoundException {
+        Configuration.reportsFolder = folder;
         File downloadedFile = foundFile.download(10000);
         System.out.println(downloadedFile.getAbsolutePath());
         return downloadedFile.canRead();

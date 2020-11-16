@@ -13,13 +13,14 @@ public class DownloadClass {
     DownloadPage downloadPage = new DownloadPage();
     String url = "https://the-internet.herokuapp.com/download";
     String fileName = "webdriverIO.png";
+    String folderForDownloadedFiles = "D:\\auto";
 
 
     @Test
     public void downloadFile() throws FileNotFoundException {
         open(url);
-        Assert.assertTrue(downloadPage.findFile(fileName),"File " + fileName + "isn't found on page");
-        Assert.assertTrue(downloadPage.downloadFile(fileName), fileName + " is NOT downloaded");
+        Assert.assertTrue(downloadPage.findFile(fileName),"File " + fileName + " isn't found on page");
+        Assert.assertTrue(downloadPage.downloadFile(folderForDownloadedFiles), fileName + " is NOT downloaded");
     }
 
 }
