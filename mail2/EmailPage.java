@@ -20,7 +20,8 @@ public class EmailPage extends LoginPage {
         ElementsCollection sentMailList = $$(By.xpath("/descendant::div[contains(@class, 'mail-MessageSnippet-Content')]"));
 
         for (SelenideElement mailSubject : sentMailList) {
-            result.add(mailSubject.find(By.cssSelector(".mail-MessageSnippet-FromText")).getAttribute("title")) ;
+            result.add(mailSubject.find(By.cssSelector(".mail-MessageSnippet-Item_sender")).getAttribute("title")) ;
+            System.out.println(mailSubject.find(By.cssSelector(".mail-MessageSnippet-Item_sender")).getAttribute("title"));
         }
         return result;
     }

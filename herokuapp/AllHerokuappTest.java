@@ -13,15 +13,15 @@ public class AllHerokuappTest {
     SoftAssert softAssert = new SoftAssert();
     String url = "https://the-internet.herokuapp.com/dropdown";
 
-//    @Test
-//    public void DropdownDefaultValuesTest(){
-//        open(url);
-//        List<String> dropDownAlloptions = dropDownPage.dropDownOptions();
-//        softAssert.assertTrue(dropDownAlloptions.contains("Please select an option"), "There is NO 'Please select an option' option");
-//        softAssert.assertTrue(dropDownAlloptions.contains("Option 1"), "There is NO 'Option 1' option");
-//        softAssert.assertTrue(dropDownAlloptions.contains("Option 2"), "There is NO 'POption 2' option");
-//        softAssert.assertAll("Check dropdown options");
-//    }
+    @Test
+    public void DropdownDefaultValuesTest(){
+        open(url);
+        List<String> dropDownAlloptions = dropDownPage.dropDownOptions();
+        softAssert.assertTrue(dropDownAlloptions.contains("Please select an option"), "There is NO 'Please select an option' option");
+        softAssert.assertTrue(dropDownAlloptions.contains("Option 1"), "There is NO 'Option 1' option");
+        softAssert.assertTrue(dropDownAlloptions.contains("Option 2"), "There is NO 'POption 2' option");
+        softAssert.assertAll("Check dropdown options");
+    }
 
     @Test
     public void SelectDropdownValue(){
