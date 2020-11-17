@@ -32,7 +32,7 @@ public class DownloadPage {
 
     public boolean downloadFile(String folder) throws FileNotFoundException {
         Configuration.reportsFolder = folder;
-        File downloadedFile = foundFile.download(10000);
+        File downloadedFile = foundFile.download(3000);
         System.out.println(downloadedFile.getAbsolutePath());
         return downloadedFile.canRead();
 
