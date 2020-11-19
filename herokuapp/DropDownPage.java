@@ -3,7 +3,6 @@ package com.sparta.herokuapp;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +17,18 @@ public class DropDownPage {
         ElementsCollection dropDownList = $$(By.xpath("//select[@id='dropdown']/*"));
 
         for (SelenideElement dropDownValues : dropDownList) {
-            result.add(dropDownValues.getText());
+            result.add(dropDownValues.getText());  //add all dropdown text options to result List
         }
-        return result;
 
+        return result;
     }
 
     public String selectInDropDown(String options) {
-        dropDown.selectOptionContainingText(options);
-        return dropDown.getText();
+        dropDown.selectOptionContainingText(options); //select option in SelenideElement dropDown
+        return dropDown.getText();         //return text value of selected option in SelenideElement dropDown
     }
 
-    public String checkDefaultValue() {
+    public String getCurrentDropDownText() {
         return dropDown.getText();
     }
 }
